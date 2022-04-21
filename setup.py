@@ -2,7 +2,7 @@ import sys
 from cx_Freeze import setup, Executable
 
 build_exe_option = {"packages": ["gen_password.py"],
-                    "includes": ["PySimpleGUi", "os", "random"]}
+                    "includes": ["PySimpleGUi"]}
 
 base = None
 if sys.platform == "win32":

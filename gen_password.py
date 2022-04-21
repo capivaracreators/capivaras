@@ -13,7 +13,7 @@ class PassGen:
             [sg.Text('E-mail/usuário', size=(10, 1)),
              sg.Input(key='usuario', size=(20, 1))],
             [sg.Text('Quantidade de caracteres'), sg.Combo(values=list(
-                range(30)), key='chars_total', default_value=1, size=(3, 1))],
+                range(4,17)), key='chars_total', default_value=8, size=(3, 1))],
             [sg.Output(size=(32, 5))],
             [sg.Button('Gerar Senha')]
         ]
@@ -30,6 +30,7 @@ class PassGen:
             if evento == 'Gerar Senha':
                 new_password = self.gen_password(valores)
                 print(new_password)
+                self.save_password(new_password, valores)
 
     def gen_password(self, valores):
         char_list = 'ABCDEFGHIJKLMNOPQRSTUVXXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%'
@@ -38,9 +39,9 @@ class PassGen:
         return new_pass
 
     def save_password(self, new_pass, valores):
-        with open('senhas.txt', newline='') as arquivo:
+        with open('senhas.txt', 'a', newline='') as arquivo:
             arquivo.write(
-                f"site: {valores['site']}, usuário: {valores['usuario']}, nova senha: {new_pass}"
+                f"\nsite: {valores['site']}, usuário: {valores['usuario']}, nova senha: {new_pass}"
             )
 
         print('Arquivo salvo')
