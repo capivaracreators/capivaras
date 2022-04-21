@@ -40,7 +40,7 @@ class PassGen:
     def save_password(self, new_pass, valores):
         with open('senhas.txt', newline='') as arquivo:
             arquivo.write(
-                f"site: {valores[site]}, usuário: {valores[usuario]}, nova senha: {new_pass}"
+                f"site: {valores['site']}, usuário: {valores['usuario']}, nova senha: {new_pass}"
             )
 
         print('Arquivo salvo')
